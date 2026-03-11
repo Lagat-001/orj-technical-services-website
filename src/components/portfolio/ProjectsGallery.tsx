@@ -5,6 +5,7 @@ import Image from "next/image";
 import { MapPin } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { fadeUp, staggerContainer } from "@/lib/motion";
+import Lightbox from "@/components/ui/Lightbox";
 
 type Category = "All" | "AC & HVAC" | "Fit-Out" | "Ventilation" | "Maintenance" | "Other";
 
@@ -109,13 +110,18 @@ const projects = [
   },
 ];
 
+type Project = (typeof projects)[number];
+
 export default function ProjectsGallery() {
   const [active, setActive] = useState<Category>("All");
+  const [selected, setSelected] = useState<Project | null>(null);
 
   const filtered =
     active === "All" ? projects : projects.filter((p) => p.category === active);
 
   return (
+    <>
+    <Lightbox project={selected} onClose={() => setSelected(null)} />
     <section className="py-20" style={{ backgroundColor: "var(--color-surface)" }}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Filter tabs */}
@@ -156,7 +162,12 @@ export default function ProjectsGallery() {
                 key={project.id}
                 variants={fadeUp}
                 layout
-                className="bg-white rounded-xl overflow-hidden shadow-sm border border-gray-100 hover:shadow-md transition-shadow"
+                className="bg-white rounded-xl overflow-hidden shadow-sm border border-gray-100 hover:shadow-md transition-shadow cursor-pointer"
+                onClick={() => setSelected(project)}
+                role="button"
+                tabIndex={0}
+                onKeyDown={(e) => e.key === "Enter" && setSelected(project)}
+                aria-label={`View ${project.title}`}
               >
                 <div className="relative h-48 w-full overflow-hidden">
                   <Image
@@ -191,5 +202,6 @@ export default function ProjectsGallery() {
         </motion.div>
       </div>
     </section>
+    </>
   );
 }

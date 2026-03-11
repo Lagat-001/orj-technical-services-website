@@ -152,7 +152,10 @@ export default function ServicesGrid() {
               key={service.id}
               id={service.id}
               variants={fadeUp}
-              className="bg-white rounded-xl overflow-hidden shadow-sm border border-gray-100 hover:shadow-md transition-shadow flex flex-col"
+              whileHover={{ scale: 1.03, y: -5 }}
+              transition={{ type: "spring", stiffness: 300, damping: 22 }}
+              className="bg-white rounded-xl overflow-hidden shadow-sm border border-gray-100 flex flex-col cursor-default"
+              style={{ willChange: "transform" }}
             >
               {/* Service image */}
               <div className="relative h-44 w-full overflow-hidden">

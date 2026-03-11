@@ -3,7 +3,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { MessageCircle, Phone, ArrowRight, CheckCircle2, ChevronDown } from "lucide-react";
-import { motion } from "framer-motion";
+import { motion, useReducedMotion } from "framer-motion";
 import { COMPANY } from "@/config/company";
 import { fadeUp, staggerContainer } from "@/lib/motion";
 
@@ -14,6 +14,10 @@ const highlights = [
 ];
 
 export default function HeroSection() {
+  const shouldReduceMotion = useReducedMotion();
+  const sc = shouldReduceMotion ? {} : staggerContainer;
+  const fu = shouldReduceMotion ? {} : fadeUp;
+
   return (
     <section className="relative min-h-[92vh] flex items-center overflow-hidden">
       {/* Background photo */}
@@ -60,18 +64,18 @@ export default function HeroSection() {
         aria-hidden="true"
       />
 
-      {/* Content */}
-      <div className="relative w-full px-6 lg:px-12 py-24">
+      {/* Content — full-width, centered */}
+      <div className="relative w-full px-6 lg:px-16 py-28 flex flex-col items-center text-center">
         <motion.div
-          className="max-w-3xl"
-          variants={staggerContainer}
+          className="w-full"
+          variants={sc}
           initial="hidden"
           animate="visible"
         >
           {/* Badge */}
-          <motion.div variants={fadeUp}>
+          <motion.div variants={fu} className="flex justify-center mb-6">
             <div
-              className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-xs font-semibold mb-6 text-white tracking-wide"
+              className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-xs font-semibold text-white tracking-wide"
               style={{
                 backgroundColor: "rgba(212,175,55,0.15)",
                 border: "1px solid rgba(212,175,55,0.45)",
@@ -84,8 +88,8 @@ export default function HeroSection() {
 
           {/* Headline */}
           <motion.h1
-            variants={fadeUp}
-            className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white leading-[1.08] mb-5 tracking-tight"
+            variants={fu}
+            className="text-5xl sm:text-6xl lg:text-7xl font-extrabold text-white leading-[1.06] mb-6 tracking-tight mx-auto max-w-5xl"
           >
             Beat the Dubai Heat —{" "}
             <span style={{ color: "var(--color-gold)" }}>AC, Ventilation</span>{" "}
@@ -94,17 +98,17 @@ export default function HeroSection() {
 
           {/* Sub-headline */}
           <motion.p
-            variants={fadeUp}
-            className="text-base sm:text-lg mb-6 leading-relaxed max-w-2xl"
-            style={{ color: "rgba(255,255,255,0.75)" }}
+            variants={fu}
+            className="text-base sm:text-xl mb-7 leading-relaxed mx-auto max-w-2xl"
+            style={{ color: "rgba(255,255,255,0.72)" }}
           >
             ORJ Technical Services L.L.C. delivers world-class air conditioning, HVAC,
             interior fit-outs, tiling, electrical, plumbing, and more.
-            Trusted by businesses and residents across the UAE since 2014.
+            Trusted across the UAE since 2014.
           </motion.p>
 
           {/* Trust highlights */}
-          <motion.ul variants={fadeUp} className="flex flex-wrap gap-x-6 gap-y-2 mb-8">
+          <motion.ul variants={fu} className="flex flex-wrap justify-center gap-x-6 gap-y-2 mb-9">
             {highlights.map((h) => (
               <li key={h} className="flex items-center gap-2 text-sm" style={{ color: "rgba(255,255,255,0.8)" }}>
                 <CheckCircle2 size={15} style={{ color: "var(--color-gold)" }} />
@@ -114,12 +118,12 @@ export default function HeroSection() {
           </motion.ul>
 
           {/* CTAs */}
-          <motion.div variants={fadeUp} className="flex flex-wrap gap-3">
+          <motion.div variants={fu} className="flex flex-wrap justify-center gap-3">
             <a
               href={`https://wa.me/${COMPANY.phone1WA}?text=Hello%2C%20I%20would%20like%20to%20get%20a%20free%20quote.`}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 px-6 py-3.5 rounded-md font-semibold text-white transition-opacity hover:opacity-90 text-sm shadow-lg"
+              className="inline-flex items-center gap-2 px-7 py-3.5 rounded-md font-semibold text-white transition-opacity hover:opacity-90 text-sm shadow-lg"
               style={{ backgroundColor: "#25D366" }}
             >
               <MessageCircle size={18} />
@@ -127,7 +131,7 @@ export default function HeroSection() {
             </a>
             <a
               href={`tel:${COMPANY.phone1WA}`}
-              className="inline-flex items-center gap-2 px-6 py-3.5 rounded-md font-semibold text-white text-sm transition-colors hover:bg-white/10"
+              className="inline-flex items-center gap-2 px-7 py-3.5 rounded-md font-semibold text-white text-sm transition-colors hover:bg-white/10"
               style={{ border: "1px solid rgba(255,255,255,0.3)" }}
             >
               <Phone size={18} />
@@ -135,7 +139,7 @@ export default function HeroSection() {
             </a>
             <Link
               href="/services"
-              className="inline-flex items-center gap-2 px-6 py-3.5 rounded-md font-semibold transition-opacity hover:opacity-90 text-sm"
+              className="inline-flex items-center gap-2 px-7 py-3.5 rounded-md font-semibold transition-opacity hover:opacity-90 text-sm"
               style={{ backgroundColor: "var(--color-gold)", color: "var(--color-navy)" }}
             >
               View Services
