@@ -187,11 +187,15 @@ export default function ContactContent() {
                       className="w-full px-4 py-2.5 rounded-lg border border-gray-200 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-700"
                     >
                       <option value="">Select a service</option>
-                      <option>AC Installation</option>
-                      <option>AC Maintenance</option>
-                      <option>Ventilation System</option>
-                      <option>Fit-Out Works</option>
-                      <option>Electrical Works</option>
+                      <option>AC Installation &amp; Maintenance</option>
+                      <option>Ventilation Systems</option>
+                      <option>Interior Fit-Out Works</option>
+                      <option>Tiling Works</option>
+                      <option>Electrical Services</option>
+                      <option>Plumbing Services</option>
+                      <option>Manpower Supply</option>
+                      <option>Packing &amp; Moving Services</option>
+                      <option>Robotics &amp; Modern Construction Systems</option>
                       <option>Other / General Inquiry</option>
                     </select>
                     {errors.service && <p className="text-red-500 text-xs mt-1">{errors.service.message}</p>}

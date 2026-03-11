@@ -57,11 +57,14 @@ export default function Footer() {
               Services
             </h3>
             <ul className="space-y-2 text-sm text-gray-400">
-              <li>Air Conditioning Systems</li>
-              <li>Ventilation & HVAC</li>
-              <li>Fit-Out Works</li>
-              <li>Maintenance Contracts</li>
-              <li>Technical & Electrical</li>
+              <li>AC Installation &amp; Maintenance</li>
+              <li>Ventilation Systems</li>
+              <li>Interior Fit-Outs</li>
+              <li>Tiling Works</li>
+              <li>Electrical &amp; Plumbing</li>
+              <li>Manpower Supply</li>
+              <li>Packing &amp; Moving</li>
+              <li>Robotics &amp; Construction</li>
             </ul>
           </div>
 

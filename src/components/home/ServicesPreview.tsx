@@ -1,27 +1,32 @@
-import Link from "next/link";
-import { Wind, Wrench, HardHat, ArrowRight } from "lucide-react";
+"use client";
 
-const services = [
+import Link from "next/link";
+import Image from "next/image";
+import { ArrowRight } from "lucide-react";
+import { motion } from "framer-motion";
+import { fadeUp, staggerContainer } from "@/lib/motion";
+
+const featured = [
   {
-    icon: Wind,
     title: "AC & Ventilation",
     description:
       "Full installation, commissioning, and maintenance of air conditioning and ventilation systems for commercial and residential properties.",
+    image: "https://images.unsplash.com/photo-1621905251918-48416bd8575a?w=600&q=80",
     href: "/services#ac",
   },
   {
-    icon: HardHat,
     title: "Fit-Out Works",
     description:
       "Complete interior fit-out solutions including partitions, ceilings, flooring, electrical, and MEP works for offices and retail spaces.",
+    image: "https://images.unsplash.com/photo-1497366216548-37526070297c?w=600&q=80",
     href: "/services#fitout",
   },
   {
-    icon: Wrench,
-    title: "Maintenance Contracts",
+    title: "Electrical Services",
     description:
-      "Scheduled preventive maintenance and emergency response contracts to keep your systems running at peak efficiency.",
-    href: "/services#maintenance",
+      "DEWA-approved low-voltage installations, panel upgrades, and lighting design. Residential and commercial specialists.",
+    image: "https://images.unsplash.com/photo-1621905252507-b35492cc74b4?w=600&q=80",
+    href: "/services#electrical",
   },
 ];
 
@@ -30,58 +35,86 @@ export default function ServicesPreview() {
     <section className="py-20" style={{ backgroundColor: "var(--color-surface)" }}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
-        <div className="text-center mb-12">
-          <p className="text-sm font-semibold uppercase tracking-widest mb-2" style={{ color: "var(--color-gold)" }}>
+        <motion.div
+          className="text-center mb-12"
+          variants={fadeUp}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+        >
+          <p
+            className="text-sm font-semibold uppercase tracking-widest mb-2"
+            style={{ color: "var(--color-gold)" }}
+          >
             What We Do
           </p>
           <h2 className="text-3xl sm:text-4xl font-bold mb-4" style={{ color: "var(--color-navy)" }}>
             Our Core Services
           </h2>
-          <p className="text-gray-500 max-w-xl mx-auto">
+          <p className="max-w-xl mx-auto" style={{ color: "var(--color-text-muted)" }}>
             End-to-end technical services delivered by certified engineers. On time, on budget.
           </p>
-        </div>
+        </motion.div>
 
         {/* Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {services.map((service) => {
-            const Icon = service.icon;
-            return (
-              <div
-                key={service.title}
-                className="bg-white rounded-xl p-6 shadow-sm border border-gray-100 flex flex-col group hover:shadow-md transition-shadow"
-              >
-                <div
-                  className="w-12 h-12 rounded-lg flex items-center justify-center mb-4"
-                  style={{ backgroundColor: "rgba(30,58,95,0.08)" }}
-                >
-                  <Icon size={24} style={{ color: "var(--color-steel)" }} />
-                </div>
+        <motion.div
+          className="grid grid-cols-1 md:grid-cols-3 gap-6"
+          variants={staggerContainer}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.2 }}
+        >
+          {featured.map((service) => (
+            <motion.div
+              key={service.title}
+              variants={fadeUp}
+              className="bg-white rounded-xl overflow-hidden shadow-sm border border-gray-100 hover:shadow-md transition-shadow group flex flex-col"
+            >
+              {/* Image */}
+              <div className="relative h-44 w-full overflow-hidden">
+                <Image
+                  src={service.image}
+                  alt={service.title}
+                  fill
+                  className="object-cover transition-transform duration-500 group-hover:scale-105"
+                  sizes="(max-width: 768px) 100vw, 33vw"
+                />
+              </div>
+
+              <div className="p-5 flex flex-col flex-1">
                 <h3 className="text-lg font-bold mb-2" style={{ color: "var(--color-navy)" }}>
                   {service.title}
                 </h3>
-                <p className="text-gray-500 text-sm leading-relaxed flex-1">{service.description}</p>
+                <p className="text-sm leading-relaxed flex-1" style={{ color: "var(--color-text-muted)" }}>
+                  {service.description}
+                </p>
                 <Link
                   href={service.href}
-                  className="inline-flex items-center gap-1 mt-4 text-sm font-medium transition-colors group-hover:gap-2"
+                  className="inline-flex items-center gap-1 mt-4 text-sm font-semibold transition-all group-hover:gap-2"
                   style={{ color: "var(--color-steel)" }}
                 >
                   Learn more <ArrowRight size={14} />
                 </Link>
               </div>
-            );
-          })}
-        </div>
+            </motion.div>
+          ))}
+        </motion.div>
 
-        <div className="text-center mt-10">
+        <motion.div
+          className="text-center mt-10"
+          variants={fadeUp}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+        >
           <Link
             href="/services"
             className="inline-flex items-center gap-2 px-6 py-3 rounded-md font-semibold text-white text-sm transition-opacity hover:opacity-90"
             style={{ backgroundColor: "var(--color-navy)" }}
           >
-            View All Services <ArrowRight size={16} />
+            View All 9 Services <ArrowRight size={16} />
           </Link>
-        </div>
+        </motion.div>
       </div>
     </section>
   );
