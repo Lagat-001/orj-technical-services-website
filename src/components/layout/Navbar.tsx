@@ -31,14 +31,14 @@ export default function Navbar() {
 
           {/* Logo */}
           <Link href="/" className="shrink-0">
-            <div className="relative w-40 sm:w-48 md:w-56 lg:w-64 h-10 md:h-12">
+            <div className="relative w-48 sm:w-56 md:w-64 lg:w-72 xl:w-80 h-12 md:h-14">
               <Image
                 src="/logo.png"
                 alt="ORJ Technical Services"
                 fill
                 className="object-contain object-left"
                 priority
-                sizes="(max-width: 640px) 160px, (max-width: 768px) 192px, (max-width: 1024px) 224px, 256px"
+                sizes="(max-width: 640px) 192px, (max-width: 768px) 224px, (max-width: 1024px) 256px, (max-width: 1280px) 288px, 320px"
               />
             </div>
           </Link>
