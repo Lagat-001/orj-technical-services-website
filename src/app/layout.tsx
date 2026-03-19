@@ -26,6 +26,11 @@ export const metadata: Metadata = {
   description:
     "Professional air conditioning, ventilation, fit-out, and technical maintenance services in Dubai, UAE.",
   keywords: "AC services Dubai, ventilation Dubai, fit-out Dubai, HVAC maintenance UAE, ORJ Technical Services",
+  icons: {
+    icon: [{ url: "/logo.png", type: "image/png" }],
+    shortcut: "/logo.png",
+    apple: [{ url: "/logo.png", type: "image/png" }],
+  },
 };
 
 export default function RootLayout({
