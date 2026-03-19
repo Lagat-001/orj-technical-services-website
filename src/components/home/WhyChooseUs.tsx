@@ -69,7 +69,7 @@ export default function WhyChooseUs() {
               >
                 <div
                   className="w-14 h-14 rounded-full flex items-center justify-center mb-4"
-                  style={{ backgroundColor: "rgba(0,31,63,0.07)" }}
+                  style={{ backgroundColor: "rgba(10,37,64,0.07)" }}
                 >
                   <Icon size={26} style={{ color: "var(--color-steel)" }} />
                 </div>

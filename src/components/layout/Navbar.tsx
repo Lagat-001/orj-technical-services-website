@@ -30,18 +30,17 @@ export default function Navbar() {
         <div className="flex items-center justify-between h-16">
 
           {/* Logo */}
-          <Link href="/" className="flex items-center gap-3 shrink-0">
-            <Image
-              src="/logo.png"
-              alt="ORJ Technical Services"
-              width={44}
-              height={44}
-              className="object-contain"
-            />
-            <span className="text-white font-bold text-sm leading-tight hidden sm:block">
-              ORJ Technical<br />
-              <span style={{ color: "var(--color-gold)" }}>Services L.L.C.</span>
-            </span>
+          <Link href="/" className="shrink-0">
+            <div className="relative w-36 md:w-48 lg:w-56 h-10">
+              <Image
+                src="/logo.png"
+                alt="ORJ Technical Services"
+                fill
+                className="object-contain object-left"
+                priority
+                sizes="(max-width: 768px) 144px, (max-width: 1024px) 192px, 224px"
+              />
+            </div>
           </Link>
 
           {/* Desktop nav — centered */}

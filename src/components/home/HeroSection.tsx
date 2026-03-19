@@ -35,7 +35,7 @@ export default function HeroSection() {
         className="absolute inset-0"
         style={{
           background:
-            "linear-gradient(135deg, rgba(0,31,63,0.93) 0%, rgba(15,52,96,0.82) 60%, rgba(0,31,63,0.70) 100%)",
+            "linear-gradient(135deg, rgba(10,37,64,0.93) 0%, rgba(26,60,94,0.82) 60%, rgba(10,37,64,0.70) 100%)",
         }}
         aria-hidden="true"
       />
@@ -77,8 +77,8 @@ export default function HeroSection() {
             <div
               className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-xs font-semibold text-white tracking-wide"
               style={{
-                backgroundColor: "rgba(212,175,55,0.15)",
-                border: "1px solid rgba(212,175,55,0.45)",
+                backgroundColor: "rgba(0,196,255,0.15)",
+                border: "1px solid rgba(0,196,255,0.45)",
               }}
             >
               <span style={{ color: "var(--color-gold)" }}>●</span>

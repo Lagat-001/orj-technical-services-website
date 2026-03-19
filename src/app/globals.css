@@ -2,14 +2,14 @@
 
 :root {
   /* Brand tokens */
-  --color-navy: #001F3F;
-  --color-steel: #0F3460;
-  --color-gold: #D4AF37;
-  --color-accent: #00AEEF;
+  --color-navy: #0A2540;
+  --color-steel: #B0BEC5;
+  --color-gold: #00C4FF;
+  --color-accent: #00C4FF;
   --color-surface: #F8FAFC;
   --color-white: #FFFFFF;
   --color-text: #0D1B2A;
-  --color-text-muted: #64748B;
+  --color-text-muted: #94A3B8;
   --background: #F8FAFC;
   --foreground: #0D1B2A;
 }

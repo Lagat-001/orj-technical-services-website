@@ -11,8 +11,8 @@ export default function HomePage() {
       <HeroSection />
       <ServicesPreview />
       <StatsBar />
-      <TrustedBySection />
       <WhyChooseUs />
+      <TrustedBySection />
       <CTASection />
     </>
   );

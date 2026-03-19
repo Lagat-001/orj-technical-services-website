@@ -11,18 +11,14 @@ export default function Footer() {
 
           {/* Brand */}
           <div className="lg:col-span-1">
-            <div className="flex items-center gap-3 mb-4">
+            <div className="relative w-28 md:w-36 h-10 mb-4">
               <Image
                 src="/logo.png"
                 alt="ORJ Technical Services"
-                width={40}
-                height={40}
-                className="object-contain"
+                fill
+                className="object-contain object-left"
+                sizes="(max-width: 768px) 112px, 144px"
               />
-              <span className="text-white font-bold text-sm leading-tight">
-                ORJ Technical<br />
-                <span style={{ color: "var(--color-gold)" }}>Services L.L.C.</span>
-              </span>
             </div>
             <p className="text-sm text-gray-400 leading-relaxed">
               Dubai&apos;s trusted partner for AC, ventilation, fit-outs, and technical maintenance.
