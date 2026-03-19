@@ -5,10 +5,10 @@ import { motion, useInView, useReducedMotion } from "framer-motion";
 import { staggerContainer, fadeUp } from "@/lib/motion";
 
 const stats = [
-  { end: 10, suffix: "+", label: "Years Experience" },
-  { end: 500, suffix: "+", label: "Projects Completed" },
-  { end: 200, suffix: "+", label: "Happy Clients" },
-  { end: 9, suffix: "", label: "Services Offered" },
+  { end: 5,  suffix: "+", label: "Years Experience" },
+  { end: 20, suffix: "+", label: "Projects Completed" },
+  { end: 19, suffix: "+", label: "Happy Clients" },
+  { end: 9,  suffix: "",  label: "Services Offered" },
 ];
 
 function useCountUp(end: number, active: boolean, duration = 1.8) {
