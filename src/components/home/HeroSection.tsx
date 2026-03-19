@@ -65,7 +65,7 @@ export default function HeroSection() {
       />
 
       {/* Content — full-width, centered */}
-      <div className="relative w-full px-6 lg:px-16 py-28 flex flex-col items-center text-center">
+      <div className="relative w-full px-6 lg:px-16 py-12 sm:py-16 md:py-20 lg:py-28 flex flex-col items-center text-center">
         <motion.div
           className="w-full"
           variants={sc}
