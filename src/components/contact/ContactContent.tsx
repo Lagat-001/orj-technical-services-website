@@ -31,7 +31,7 @@ export default function ContactContent() {
     const body = encodeURIComponent(
       `Name: ${data.name}\nPhone: ${data.phone}\nEmail: ${data.email || "N/A"}\nService: ${data.service}\n\nMessage:\n${data.message || "N/A"}`
     );
-    window.location.href = `mailto:${COMPANY.email}?subject=${subject}&body=${body}`;
+    window.location.assign(`mailto:${COMPANY.email}?subject=${subject}&body=${body}`);
     setSubmitted(true);
   }
 

@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
@@ -12,94 +12,139 @@ const navLinks = [
   { label: "Home", href: "/" },
   { label: "Services", href: "/services" },
   { label: "Portfolio", href: "/portfolio" },
-  { label: "About Us", href: "/about" },
+  { label: "About", href: "/about" },
   { label: "Contact", href: "/contact" },
 ];
 
+const quoteMsg = "Hello%2C%20I%20would%20like%20to%20get%20a%20free%20quote.";
+
 export default function Navbar() {
   const [open, setOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
   const pathname = usePathname();
+
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 30);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
 
   return (
     <header
-      className="sticky top-0 z-50 shadow-lg"
-      style={{ backgroundColor: "var(--color-navy)", borderBottom: "1px solid rgba(255,255,255,0.06)" }}
+      className="sticky top-0 z-50 transition-all"
+      style={{
+        backgroundColor: scrolled ? "rgba(10,26,47,0.92)" : "var(--navy-900)",
+        backdropFilter: scrolled ? "blur(12px)" : "none",
+        boxShadow: scrolled ? "0 10px 30px -18px rgba(0,0,0,0.7)" : "none",
+        borderBottom: "1px solid rgba(255,255,255,0.08)",
+      }}
     >
-      {/* Full-stretch inner — no max-w constraint */}
-      <div className="w-full px-6 lg:px-12">
-        <div className="flex items-center justify-between h-16">
-
-          {/* Logo */}
-          <Link href="/" className="shrink-0">
-            <div className="relative w-48 sm:w-56 md:w-64 lg:w-72 xl:w-80 h-12 md:h-14">
+      <div className="w-full max-w-[1180px] mx-auto px-6">
+        <div
+          className="flex items-center justify-between transition-all"
+          style={{ height: scrolled ? 68 : 84 }}
+        >
+          {/* Brand */}
+          <Link href="/" className="flex items-center gap-3.5 shrink-0" aria-label="ORJ Technical Services home">
+            <span
+              className="relative block transition-all"
+              style={{
+                height: scrolled ? 46 : 58,
+                width: scrolled ? 46 : 58,
+                filter: "drop-shadow(0 4px 12px rgba(0,0,0,0.35))",
+              }}
+            >
               <Image
-                src="/logo.png"
-                alt="ORJ Technical Services"
+                src="/emblem.png"
+                alt="ORJ Technical Services logo"
                 fill
-                className="object-contain object-left"
+                className="object-contain"
                 priority
-                sizes="(max-width: 640px) 192px, (max-width: 768px) 224px, (max-width: 1024px) 256px, (max-width: 1280px) 288px, 320px"
+                sizes="58px"
               />
-            </div>
+            </span>
+            <span className="hidden sm:flex flex-col leading-[1.05]">
+              <b
+                className="font-bold text-white tracking-[0.01em]"
+                style={{ fontFamily: "var(--font-space-grotesk), sans-serif", fontSize: "1.05rem" }}
+              >
+                ORJ Technical Services
+              </b>
+              <span
+                className="uppercase"
+                style={{
+                  fontFamily: "var(--font-space-mono), monospace",
+                  color: "var(--cyan-300)",
+                  fontSize: "0.62rem",
+                  letterSpacing: "0.18em",
+                }}
+              >
+                Dubai · UAE · Est. 2014
+              </span>
+            </span>
           </Link>
 
-          {/* Desktop nav — centered */}
-          <nav className="hidden md:flex items-center gap-7 mx-auto">
-            {navLinks.map((link) => (
-              <Link
-                key={link.href}
-                href={link.href}
-                className="relative text-sm font-medium transition-colors group"
-                style={pathname === link.href ? { color: "var(--color-gold)" } : { color: "rgba(255,255,255,0.8)" }}
-              >
-                {link.label}
-                {/* Active underline */}
-                {pathname === link.href && (
+          {/* Desktop nav */}
+          <nav className="hidden md:flex items-center gap-7">
+            {navLinks.map((link) => {
+              const active = pathname === link.href;
+              return (
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  className="relative text-[0.95rem] font-medium py-1 transition-colors group"
+                  style={{ color: active ? "#fff" : "rgba(255,255,255,0.86)" }}
+                >
+                  {link.label}
                   <span
-                    className="absolute -bottom-1 left-0 right-0 h-0.5 rounded-full"
-                    style={{ backgroundColor: "var(--color-gold)" }}
+                    className="absolute left-0 -bottom-0.5 h-0.5 rounded-full transition-all"
+                    style={{
+                      width: active ? "100%" : "0%",
+                      backgroundColor: "var(--cyan-400)",
+                    }}
                   />
-                )}
-                {/* Hover underline */}
-                {pathname !== link.href && (
-                  <span
-                    className="absolute -bottom-1 left-0 right-0 h-0.5 rounded-full scale-x-0 group-hover:scale-x-100 transition-transform origin-left"
-                    style={{ backgroundColor: "var(--color-accent)" }}
-                  />
-                )}
-              </Link>
-            ))}
+                  {!active && (
+                    <span
+                      className="absolute left-0 -bottom-0.5 h-0.5 rounded-full scale-x-0 group-hover:scale-x-100 origin-left transition-transform"
+                      style={{ width: "100%", backgroundColor: "var(--cyan-400)" }}
+                    />
+                  )}
+                </Link>
+              );
+            })}
           </nav>
 
           {/* Desktop CTA */}
-          <div className="hidden md:flex items-center gap-3 shrink-0">
+          <div className="hidden md:flex items-center gap-3.5 shrink-0">
             <a
               href={`tel:${COMPANY.phone1WA}`}
-              className="flex items-center gap-1.5 text-sm transition-colors"
-              style={{ color: "rgba(255,255,255,0.7)" }}
-              onMouseEnter={e => (e.currentTarget.style.color = "white")}
-              onMouseLeave={e => (e.currentTarget.style.color = "rgba(255,255,255,0.7)")}
+              className="flex items-center gap-2 text-[0.95rem] font-semibold text-white transition-colors hover:text-[var(--cyan-300)]"
             >
-              <Phone size={13} />
+              <Phone size={16} style={{ color: "var(--cyan-300)" }} />
               {COMPANY.phone1Display}
             </a>
             <a
-              href={`https://wa.me/${COMPANY.phone1WA}?text=${COMPANY.whatsappMsg}`}
+              href={`https://wa.me/${COMPANY.phone1WA}?text=${quoteMsg}`}
               target="_blank"
               rel="noopener noreferrer"
-              className="px-4 py-2 rounded-md text-sm font-semibold text-white transition-opacity hover:opacity-90"
-              style={{ backgroundColor: "#25D366" }}
+              className="px-5 py-2.5 rounded-[11px] text-sm font-semibold transition-all hover:-translate-y-0.5"
+              style={{
+                backgroundColor: "var(--cyan-400)",
+                color: "#04243a",
+                boxShadow: "0 10px 26px -10px rgba(28,169,227,0.75)",
+              }}
             >
-              WhatsApp Us
+              Free Quote
             </a>
           </div>
 
           {/* Mobile hamburger */}
           <button
-            className="md:hidden p-2 rounded-md transition-colors"
-            style={{ color: "rgba(255,255,255,0.8)" }}
+            className="md:hidden p-2 rounded-md text-white"
             onClick={() => setOpen(!open)}
             aria-label="Toggle menu"
+            aria-expanded={open}
           >
             <AnimatePresence mode="wait" initial={false}>
               <motion.span
@@ -110,14 +155,14 @@ export default function Navbar() {
                 transition={{ duration: 0.15 }}
                 className="block"
               >
-                {open ? <X size={22} /> : <Menu size={22} />}
+                {open ? <X size={24} /> : <Menu size={24} />}
               </motion.span>
             </AnimatePresence>
           </button>
         </div>
       </div>
 
-      {/* Mobile menu — animated slide down */}
+      {/* Mobile menu */}
       <AnimatePresence>
         {open && (
           <motion.div
@@ -127,41 +172,46 @@ export default function Navbar() {
             exit={{ height: 0, opacity: 0 }}
             transition={{ duration: 0.22, ease: "easeInOut" }}
             className="md:hidden overflow-hidden"
-            style={{ backgroundColor: "var(--color-navy)", borderTop: "1px solid rgba(255,255,255,0.08)" }}
+            style={{
+              backgroundColor: "rgba(10,26,47,0.98)",
+              backdropFilter: "blur(12px)",
+              borderTop: "1px solid var(--line-d)",
+            }}
           >
-            <nav className="px-6 py-4 flex flex-col gap-1">
+            <nav className="px-6 py-3 flex flex-col">
               {navLinks.map((link) => (
                 <Link
                   key={link.href}
                   href={link.href}
                   onClick={() => setOpen(false)}
-                  className="text-sm font-medium py-3 px-3 rounded-md transition-colors"
-                  style={
-                    pathname === link.href
-                      ? { color: "var(--color-gold)", backgroundColor: "rgba(255,255,255,0.07)" }
-                      : { color: "rgba(255,255,255,0.75)" }
-                  }
+                  className="text-[0.95rem] font-medium py-3.5 transition-colors"
+                  style={{
+                    color: pathname === link.href ? "var(--cyan-300)" : "rgba(255,255,255,0.86)",
+                  }}
                 >
                   {link.label}
                 </Link>
               ))}
-              <div className="flex flex-col gap-2 mt-3 pt-3" style={{ borderTop: "1px solid rgba(255,255,255,0.1)" }}>
+              <div
+                className="flex flex-col gap-2.5 mt-3 pt-4"
+                style={{ borderTop: "1px solid rgba(255,255,255,0.1)" }}
+              >
                 <a
                   href={`tel:${COMPANY.phone1WA}`}
-                  className="flex items-center justify-center gap-2 py-3 rounded-md text-sm font-medium"
-                  style={{ color: "rgba(255,255,255,0.75)", border: "1px solid rgba(255,255,255,0.15)" }}
+                  className="flex items-center justify-center gap-2 py-3 rounded-[11px] text-sm font-medium text-white"
+                  style={{ border: "1px solid rgba(255,255,255,0.18)" }}
                 >
-                  <Phone size={15} />
+                  <Phone size={15} style={{ color: "var(--cyan-300)" }} />
                   {COMPANY.phone1Display}
                 </a>
                 <a
-                  href={`https://wa.me/${COMPANY.phone1WA}?text=${COMPANY.whatsappMsg}`}
+                  href={`https://wa.me/${COMPANY.phone1WA}?text=${quoteMsg}`}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="py-3 rounded-md text-sm font-semibold text-white text-center"
-                  style={{ backgroundColor: "#25D366" }}
+                  className="py-3 rounded-[11px] text-sm font-semibold text-center"
+                  style={{ backgroundColor: "var(--cyan-400)", color: "#04243a" }}
                 >
-                  WhatsApp Us
+                  Free Quote
                 </a>
               </div>
             </nav>

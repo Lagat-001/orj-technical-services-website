@@ -10,28 +10,41 @@ export const metadata: Metadata = {
 
 export default function PortfolioPage() {
   return (
-    <>
+    <div className="orj-home">
       {/* Page header */}
       <section
-        className="py-16"
-        style={{
-          background: "linear-gradient(135deg, var(--color-navy) 0%, var(--color-steel) 100%)",
-        }}
+        className="relative overflow-hidden"
+        style={{ background: "var(--navy-900)", color: "#fff", padding: "76px 0 84px" }}
       >
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <p className="text-sm font-semibold uppercase tracking-widest mb-2" style={{ color: "var(--color-gold)" }}>
-            Our Work
-          </p>
-          <h1 className="text-4xl font-bold text-white mb-4">Project Portfolio</h1>
-          <p className="text-gray-300 max-w-xl mx-auto">
-            A selection of completed projects across Dubai and the UAE.
-            Each project is delivered with quality and care.
+        <div className="hero-grid" aria-hidden="true" />
+        <div className="wrap" style={{ position: "relative", zIndex: 2 }}>
+          <span className="eyebrow on-dark">Our work</span>
+          <h1
+            style={{
+              color: "#fff",
+              fontSize: "clamp(2.2rem, 5vw, 3.4rem)",
+              fontWeight: 700,
+              marginTop: 16,
+            }}
+          >
+            Project portfolio
+          </h1>
+          <p
+            style={{
+              color: "rgba(233,244,251,0.82)",
+              fontSize: "1.08rem",
+              marginTop: 16,
+              maxWidth: 620,
+            }}
+          >
+            A selection of completed projects across Dubai and the UAE — each delivered
+            with quality and care.
           </p>
         </div>
       </section>
 
       <ProjectsGallery />
       <CTASection />
-    </>
+    </div>
   );
 }

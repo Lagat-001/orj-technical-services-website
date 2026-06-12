@@ -1,87 +1,91 @@
 "use client";
 
-import { ShieldCheck, Clock, Award, Users } from "lucide-react";
 import { motion } from "framer-motion";
 import { fadeUp, staggerContainer } from "@/lib/motion";
 
+const svgProps = {
+  viewBox: "0 0 24 24",
+  fill: "none",
+  stroke: "currentColor",
+  strokeWidth: 2,
+  strokeLinecap: "round" as const,
+  strokeLinejoin: "round" as const,
+};
+
 const reasons = [
   {
-    icon: ShieldCheck,
     title: "Licensed & Insured",
-    description: "Fully licensed in the UAE with comprehensive insurance. Your projects are in safe hands.",
+    desc: "Fully licensed in the UAE with comprehensive insurance. Your project is in safe hands.",
+    icon: (
+      <svg {...svgProps}>
+        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+      </svg>
+    ),
   },
   {
-    icon: Award,
     title: "Certified Engineers",
-    description: "Our team holds internationally recognized certifications in HVAC and technical services.",
+    desc: "Our team holds internationally recognised certifications in HVAC and technical services.",
+    icon: (
+      <svg {...svgProps}>
+        <circle cx="12" cy="8" r="5" />
+        <path d="M8.5 13L7 22l5-3 5 3-1.5-9" />
+      </svg>
+    ),
   },
   {
-    icon: Clock,
     title: "On-Time Delivery",
-    description: "We respect your schedule. Projects are completed on time and within budget.",
+    desc: "We respect your schedule. Projects are completed on time and within budget.",
+    icon: (
+      <svg {...svgProps}>
+        <circle cx="12" cy="12" r="9" />
+        <path d="M12 7v5l3 2" />
+      </svg>
+    ),
   },
   {
-    icon: Users,
     title: "Dedicated Support",
-    description: "A dedicated account manager and 24/7 emergency support line for all our clients.",
+    desc: "A dedicated account manager and a 24/7 emergency line for every client.",
+    icon: (
+      <svg {...svgProps}>
+        <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
+      </svg>
+    ),
   },
 ];
 
 export default function WhyChooseUs() {
   return (
-    <section className="py-20 bg-white">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section className="section ice">
+      <div className="wrap">
         <motion.div
-          className="text-center mb-12"
+          className="sec-head center"
           variants={fadeUp}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
         >
-          <p
-            className="text-sm font-semibold uppercase tracking-widest mb-2"
-            style={{ color: "var(--color-gold)" }}
-          >
-            Why ORJ
-          </p>
-          <h2 className="text-3xl sm:text-4xl font-bold mb-4" style={{ color: "var(--color-navy)" }}>
-            Built on Trust &amp; Excellence
-          </h2>
-          <p className="max-w-xl mx-auto" style={{ color: "var(--color-text-muted)" }}>
-            Businesses across Dubai choose ORJ for our professionalism, expertise, and reliability.
+          <span className="eyebrow">Why ORJ</span>
+          <h2>Built on trust &amp; excellence</h2>
+          <p>
+            Developers and businesses across Dubai choose ORJ for professionalism,
+            expertise and reliability.
           </p>
         </motion.div>
 
         <motion.div
-          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6"
+          className="why-grid"
           variants={staggerContainer}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, amount: 0.2 }}
         >
-          {reasons.map((reason) => {
-            const Icon = reason.icon;
-            return (
-              <motion.div
-                key={reason.title}
-                variants={fadeUp}
-                className="flex flex-col items-center text-center p-6 rounded-xl border border-gray-100 hover:border-blue-100 hover:shadow-sm transition-all cursor-default"
-              >
-                <div
-                  className="w-14 h-14 rounded-full flex items-center justify-center mb-4"
-                  style={{ backgroundColor: "rgba(10,37,64,0.07)" }}
-                >
-                  <Icon size={26} style={{ color: "var(--color-steel)" }} />
-                </div>
-                <h3 className="font-bold mb-2 text-base" style={{ color: "var(--color-navy)" }}>
-                  {reason.title}
-                </h3>
-                <p className="text-sm leading-relaxed" style={{ color: "var(--color-text-muted)" }}>
-                  {reason.description}
-                </p>
-              </motion.div>
-            );
-          })}
+          {reasons.map((r) => (
+            <motion.div className="why" key={r.title} variants={fadeUp}>
+              <div className="why-ico">{r.icon}</div>
+              <h3>{r.title}</h3>
+              <p>{r.desc}</p>
+            </motion.div>
+          ))}
         </motion.div>
       </div>
     </section>

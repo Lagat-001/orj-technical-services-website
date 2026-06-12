@@ -1,5 +1,5 @@
-import type { Metadata } from "next";
-import { Geist, Geist_Mono, Inter } from "next/font/google";
+import type { Metadata, Viewport } from "next";
+import { Inter, Space_Grotesk, Space_Mono } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
@@ -9,33 +9,33 @@ const inter = Inter({
   variable: "--font-inter",
   subsets: ["latin"],
   weight: ["400", "500", "600", "700", "800"],
+  display: "swap",
 });
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const spaceGrotesk = Space_Grotesk({
+  variable: "--font-space-grotesk",
   subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
+  display: "swap",
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
+const spaceMono = Space_Mono({
+  variable: "--font-space-mono",
   subsets: ["latin"],
+  weight: ["400", "700"],
+  display: "swap",
 });
 
 export const metadata: Metadata = {
-  title: "ORJ Technical Services L.L.C. — Dubai",
+  title: "ORJ Technical Services L.L.C. — AC, Ventilation & Fit-Out Experts in Dubai",
   description:
-    "Professional air conditioning, ventilation, fit-out, and technical maintenance services in Dubai, UAE.",
-  keywords: "AC services Dubai, ventilation Dubai, fit-out Dubai, HVAC maintenance UAE, ORJ Technical Services",
-  icons: {
-    icon: [
-      { url: "/favicon.ico",  sizes: "16x16 32x32 48x48", type: "image/x-icon" },
-      { url: "/icon.png",     sizes: "32x32",              type: "image/png" },
-      { url: "/icon-192.png", sizes: "192x192",            type: "image/png" },
-    ],
-    apple: [
-      { url: "/apple-icon.png", sizes: "180x180", type: "image/png" },
-    ],
-  },
+    "Professional air conditioning, ventilation, fit-out, electrical, plumbing and technical maintenance services in Dubai, UAE. Licensed since 2014.",
+  keywords:
+    "AC services Dubai, ventilation Dubai, fit-out Dubai, HVAC maintenance UAE, ORJ Technical Services",
+};
+
+export const viewport: Viewport = {
+  themeColor: "#0A1A2F",
 };
 
 export default function RootLayout({
@@ -45,7 +45,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${inter.variable} ${geistSans.variable} ${geistMono.variable} antialiased`}>
+      <body
+        className={`${inter.variable} ${spaceGrotesk.variable} ${spaceMono.variable} antialiased`}
+      >
         <Navbar />
         <main>{children}</main>
         <Footer />

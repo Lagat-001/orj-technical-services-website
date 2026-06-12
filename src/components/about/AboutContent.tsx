@@ -60,7 +60,7 @@ export default function AboutContent() {
                 </p>
                 <p>
                   We work with developers, facility managers, contractors, and private
-                  clients — delivering tailored solutions that meet each client's unique
+                  clients — delivering tailored solutions that meet each client&apos;s unique
                   requirements and budget.
                 </p>
               </div>

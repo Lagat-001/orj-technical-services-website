@@ -6,7 +6,9 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "gen:projects": "node scripts/generate-projects.mjs",
+    "gen:favicons": "node scripts/generate-favicons.mjs"
   },
   "dependencies": {
     "@hookform/resolvers": "^5.2.2",
