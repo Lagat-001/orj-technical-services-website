@@ -15,11 +15,11 @@ export default function AboutPage() {
       <section
         className="py-16"
         style={{
-          background: "linear-gradient(135deg, var(--color-navy) 0%, var(--color-steel) 100%)",
+          background: "linear-gradient(135deg, var(--green) 0%, var(--green-soft) 100%)",
         }}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <p className="text-sm font-semibold uppercase tracking-widest mb-2" style={{ color: "var(--color-gold)" }}>
+          <p className="text-sm font-semibold uppercase tracking-widest mb-2" style={{ color: "var(--green-accent)" }}>
             About Us
           </p>
           <h1 className="text-4xl font-bold text-white mb-4">Our Company</h1>

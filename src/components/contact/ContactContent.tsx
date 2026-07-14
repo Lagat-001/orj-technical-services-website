@@ -36,16 +36,16 @@ export default function ContactContent() {
   }
 
   return (
-    <section className="py-20" style={{ backgroundColor: "var(--color-surface)" }}>
+    <section className="py-20" style={{ backgroundColor: "var(--bg)" }}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
 
           {/* Left: Contact info */}
           <div>
-            <p className="text-sm font-semibold uppercase tracking-widest mb-2" style={{ color: "var(--color-gold)" }}>
+            <p className="text-sm font-semibold uppercase tracking-widest mb-2" style={{ color: "var(--green-accent)" }}>
               Get in Touch
             </p>
-            <h2 className="text-3xl font-bold mb-4" style={{ color: "var(--color-navy)" }}>
+            <h2 className="text-3xl font-bold mb-4" style={{ color: "var(--green)" }}>
               Contact Us
             </h2>
             <p className="text-gray-500 mb-8 leading-relaxed">
@@ -60,7 +60,7 @@ export default function ContactContent() {
                   <MessageCircle size={18} className="text-white" />
                 </div>
                 <div>
-                  <p className="font-semibold text-sm mb-0.5" style={{ color: "var(--color-navy)" }}>WhatsApp — Sales</p>
+                  <p className="font-semibold text-sm mb-0.5" style={{ color: "var(--green)" }}>WhatsApp — Sales</p>
                   <a href={`https://wa.me/${COMPANY.phone1WA}?text=${COMPANY.whatsappMsg}`} target="_blank" rel="noopener noreferrer" className="text-sm" style={{ color: "#25D366" }}>
                     {COMPANY.phone1Display} →
                   </a>
@@ -73,7 +73,7 @@ export default function ContactContent() {
                   <MessageCircle size={18} className="text-white" />
                 </div>
                 <div>
-                  <p className="font-semibold text-sm mb-0.5" style={{ color: "var(--color-navy)" }}>WhatsApp — Support</p>
+                  <p className="font-semibold text-sm mb-0.5" style={{ color: "var(--green)" }}>WhatsApp — Support</p>
                   <a href={`https://wa.me/${COMPANY.phone2WA}?text=${COMPANY.whatsappMsg}`} target="_blank" rel="noopener noreferrer" className="text-sm" style={{ color: "#25D366" }}>
                     {COMPANY.phone2Display} →
                   </a>
@@ -82,11 +82,11 @@ export default function ContactContent() {
 
               {/* Phone */}
               <div className="flex items-start gap-4 p-4 bg-white rounded-xl border border-gray-100">
-                <div className="w-10 h-10 rounded-lg flex items-center justify-center shrink-0" style={{ backgroundColor: "var(--color-steel)" }}>
+                <div className="w-10 h-10 rounded-lg flex items-center justify-center shrink-0" style={{ backgroundColor: "var(--green-soft)" }}>
                   <Phone size={18} className="text-white" />
                 </div>
                 <div>
-                  <p className="font-semibold text-sm mb-0.5" style={{ color: "var(--color-navy)" }}>Phone</p>
+                  <p className="font-semibold text-sm mb-0.5" style={{ color: "var(--green)" }}>Phone</p>
                   <a href={`tel:${COMPANY.phone1WA}`} className="text-sm text-gray-600 hover:underline block">{COMPANY.phone1Display}</a>
                   <a href={`tel:${COMPANY.phone2WA}`} className="text-sm text-gray-600 hover:underline block">{COMPANY.phone2Display}</a>
                 </div>
@@ -94,33 +94,33 @@ export default function ContactContent() {
 
               {/* Email */}
               <div className="flex items-start gap-4 p-4 bg-white rounded-xl border border-gray-100">
-                <div className="w-10 h-10 rounded-lg flex items-center justify-center shrink-0" style={{ backgroundColor: "var(--color-steel)" }}>
+                <div className="w-10 h-10 rounded-lg flex items-center justify-center shrink-0" style={{ backgroundColor: "var(--green-soft)" }}>
                   <Mail size={18} className="text-white" />
                 </div>
                 <div>
-                  <p className="font-semibold text-sm mb-0.5" style={{ color: "var(--color-navy)" }}>Email</p>
+                  <p className="font-semibold text-sm mb-0.5" style={{ color: "var(--green)" }}>Email</p>
                   <a href={`mailto:${COMPANY.email}`} className="text-sm text-gray-600 hover:underline">{COMPANY.email}</a>
                 </div>
               </div>
 
               {/* Address */}
               <div className="flex items-start gap-4 p-4 bg-white rounded-xl border border-gray-100">
-                <div className="w-10 h-10 rounded-lg flex items-center justify-center shrink-0" style={{ backgroundColor: "var(--color-navy)" }}>
+                <div className="w-10 h-10 rounded-lg flex items-center justify-center shrink-0" style={{ backgroundColor: "var(--green)" }}>
                   <MapPin size={18} className="text-white" />
                 </div>
                 <div>
-                  <p className="font-semibold text-sm mb-0.5" style={{ color: "var(--color-navy)" }}>Address</p>
+                  <p className="font-semibold text-sm mb-0.5" style={{ color: "var(--green)" }}>Address</p>
                   <p className="text-sm text-gray-600">{COMPANY.address}</p>
                 </div>
               </div>
 
               {/* Hours */}
               <div className="flex items-start gap-4 p-4 bg-white rounded-xl border border-gray-100">
-                <div className="w-10 h-10 rounded-lg flex items-center justify-center shrink-0" style={{ backgroundColor: "var(--color-gold)" }}>
+                <div className="w-10 h-10 rounded-lg flex items-center justify-center shrink-0" style={{ backgroundColor: "var(--green-accent)" }}>
                   <Clock size={18} className="text-white" />
                 </div>
                 <div>
-                  <p className="font-semibold text-sm mb-0.5" style={{ color: "var(--color-navy)" }}>Working Hours</p>
+                  <p className="font-semibold text-sm mb-0.5" style={{ color: "var(--green)" }}>Working Hours</p>
                   <p className="text-sm text-gray-600">{COMPANY.workingHours}</p>
                   <p className="text-sm text-gray-600">{COMPANY.emergencySupport}</p>
                 </div>
@@ -133,17 +133,17 @@ export default function ContactContent() {
             {submitted ? (
               <div className="flex flex-col items-center justify-center h-full text-center py-10">
                 <CheckCircle2 size={56} className="mb-4" style={{ color: "#25D366" }} />
-                <h3 className="text-xl font-bold mb-2" style={{ color: "var(--color-navy)" }}>Message Sent!</h3>
+                <h3 className="text-xl font-bold mb-2" style={{ color: "var(--green)" }}>Message Sent!</h3>
                 <p className="text-gray-500 text-sm">
                   Your email client should have opened. If not, email us directly at{" "}
-                  <a href={`mailto:${COMPANY.email}`} className="underline" style={{ color: "var(--color-steel)" }}>
+                  <a href={`mailto:${COMPANY.email}`} className="underline" style={{ color: "var(--green-soft)" }}>
                     {COMPANY.email}
                   </a>
                 </p>
               </div>
             ) : (
               <>
-                <h3 className="text-xl font-bold mb-6" style={{ color: "var(--color-navy)" }}>
+                <h3 className="text-xl font-bold mb-6" style={{ color: "var(--green)" }}>
                   Send Us a Message
                 </h3>
                 <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
@@ -215,7 +215,7 @@ export default function ContactContent() {
                     type="submit"
                     disabled={isSubmitting}
                     className="w-full py-3 rounded-lg font-semibold text-sm text-white transition-opacity hover:opacity-90 disabled:opacity-60"
-                    style={{ backgroundColor: "var(--color-navy)" }}
+                    style={{ backgroundColor: "var(--green)" }}
                   >
                     {isSubmitting ? "Sending..." : "Send Message"}
                   </button>

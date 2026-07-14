@@ -1,28 +1,22 @@
 import type { Metadata, Viewport } from "next";
-import { Inter, Space_Grotesk, Space_Mono } from "next/font/google";
+import { Montserrat, Noto_Kufi_Arabic } from "next/font/google";
 import "./globals.css";
+import TopBar from "@/components/layout/TopBar";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import WhatsAppFloat from "@/components/ui/WhatsAppFloat";
 
-const inter = Inter({
-  variable: "--font-inter",
+const montserrat = Montserrat({
+  variable: "--font-montserrat",
   subsets: ["latin"],
   weight: ["400", "500", "600", "700", "800"],
   display: "swap",
 });
 
-const spaceGrotesk = Space_Grotesk({
-  variable: "--font-space-grotesk",
-  subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
-  display: "swap",
-});
-
-const spaceMono = Space_Mono({
-  variable: "--font-space-mono",
-  subsets: ["latin"],
-  weight: ["400", "700"],
+const kufi = Noto_Kufi_Arabic({
+  variable: "--font-kufi",
+  subsets: ["arabic"],
+  weight: ["500", "700"],
   display: "swap",
 });
 
@@ -43,7 +37,7 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: "#0A1A2F",
+  themeColor: "#155536",
 };
 
 export default function RootLayout({
@@ -53,11 +47,15 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body
-        className={`${inter.variable} ${spaceGrotesk.variable} ${spaceMono.variable} antialiased`}
-      >
-        <Navbar />
-        <main>{children}</main>
+      <body className={`${montserrat.variable} ${kufi.variable} antialiased`}>
+        <a className="skip" href="#main">
+          Skip to content
+        </a>
+        <TopBar />
+        <div className="sticky-wrap">
+          <Navbar />
+        </div>
+        <main id="main">{children}</main>
         <Footer />
         <WhatsAppFloat />
       </body>

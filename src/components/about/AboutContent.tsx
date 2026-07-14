@@ -40,14 +40,14 @@ export default function AboutContent() {
             >
               <p
                 className="text-sm font-semibold uppercase tracking-widest mb-2"
-                style={{ color: "var(--color-gold)" }}
+                style={{ color: "var(--green-accent)" }}
               >
                 Our Story
               </p>
-              <h2 className="text-3xl sm:text-4xl font-bold mb-6" style={{ color: "var(--color-navy)" }}>
+              <h2 className="text-3xl sm:text-4xl font-bold mb-6" style={{ color: "var(--green)" }}>
                 Who is ORJ Technical Services?
               </h2>
-              <div className="space-y-4 leading-relaxed" style={{ color: "var(--color-text-muted)" }}>
+              <div className="space-y-4 leading-relaxed" style={{ color: "var(--muted)" }}>
                 <p>
                   ORJ Technical Services L.L.C. is a Dubai-based company specializing in
                   air conditioning, ventilation, interior fit-outs, and technical maintenance.
@@ -73,7 +73,7 @@ export default function AboutContent() {
               whileInView="visible"
               viewport={{ once: true }}
               className="rounded-2xl p-8"
-              style={{ background: "linear-gradient(135deg, var(--color-navy) 0%, var(--color-steel) 100%)" }}
+              style={{ background: "linear-gradient(135deg, var(--green) 0%, var(--green-soft) 100%)" }}
             >
               <div className="grid grid-cols-2 gap-6 text-center">
                 {[
@@ -83,7 +83,7 @@ export default function AboutContent() {
                   { value: "24/7", label: "Support" },
                 ].map((stat) => (
                   <div key={stat.label} className="py-4">
-                    <div className="text-4xl font-extrabold mb-1" style={{ color: "var(--color-gold)" }}>
+                    <div className="text-4xl font-extrabold mb-1" style={{ color: "var(--green-accent)" }}>
                       {stat.value}
                     </div>
                     <div className="text-sm" style={{ color: "rgba(255,255,255,0.6)" }}>
@@ -98,7 +98,7 @@ export default function AboutContent() {
       </section>
 
       {/* Values section */}
-      <section className="py-20" style={{ backgroundColor: "var(--color-surface)" }}>
+      <section className="py-20" style={{ backgroundColor: "var(--bg)" }}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             className="text-center mb-12"
@@ -109,11 +109,11 @@ export default function AboutContent() {
           >
             <p
               className="text-sm font-semibold uppercase tracking-widest mb-2"
-              style={{ color: "var(--color-gold)" }}
+              style={{ color: "var(--green-accent)" }}
             >
               Our Values
             </p>
-            <h2 className="text-3xl font-bold" style={{ color: "var(--color-navy)" }}>
+            <h2 className="text-3xl font-bold" style={{ color: "var(--green)" }}>
               What Drives Us
             </h2>
           </motion.div>
@@ -137,12 +137,12 @@ export default function AboutContent() {
                     className="w-14 h-14 rounded-full flex items-center justify-center mx-auto mb-4"
                     style={{ backgroundColor: "rgba(0,31,63,0.07)" }}
                   >
-                    <Icon size={26} style={{ color: "var(--color-steel)" }} />
+                    <Icon size={26} style={{ color: "var(--green-soft)" }} />
                   </div>
-                  <h3 className="font-bold mb-2 text-lg" style={{ color: "var(--color-navy)" }}>
+                  <h3 className="font-bold mb-2 text-lg" style={{ color: "var(--green)" }}>
                     {value.title}
                   </h3>
-                  <p className="text-sm leading-relaxed" style={{ color: "var(--color-text-muted)" }}>
+                  <p className="text-sm leading-relaxed" style={{ color: "var(--muted)" }}>
                     {value.description}
                   </p>
                 </motion.div>

@@ -138,7 +138,7 @@ const services = [
 
 export default function ServicesGrid() {
   return (
-    <section className="py-20" style={{ backgroundColor: "var(--color-surface)" }}>
+    <section className="py-20" style={{ backgroundColor: "var(--bg)" }}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"
@@ -174,7 +174,7 @@ export default function ServicesGrid() {
               </div>
 
               <div className="p-5 flex flex-col flex-1">
-                <h3 className="text-base font-bold mb-2 leading-snug" style={{ color: "var(--color-navy)" }}>
+                <h3 className="text-base font-bold mb-2 leading-snug" style={{ color: "var(--green)" }}>
                   {service.title}
                 </h3>
                 <p className="text-sm text-gray-500 leading-relaxed mb-4">{service.description}</p>
@@ -183,7 +183,7 @@ export default function ServicesGrid() {
                     <li key={item} className="flex items-start gap-2 text-sm text-gray-600">
                       <span
                         className="w-1.5 h-1.5 rounded-full shrink-0 mt-1.5"
-                        style={{ backgroundColor: "var(--color-gold)" }}
+                        style={{ backgroundColor: "var(--green-accent)" }}
                       />
                       {item}
                     </li>
@@ -208,7 +208,7 @@ export default function ServicesGrid() {
           <Link
             href="/contact"
             className="inline-flex items-center gap-2 px-8 py-3.5 rounded-md font-semibold text-white text-sm transition-opacity hover:opacity-90 shadow-sm"
-            style={{ backgroundColor: "var(--color-navy)" }}
+            style={{ backgroundColor: "var(--green)" }}
           >
             Request a Custom Quote
           </Link>

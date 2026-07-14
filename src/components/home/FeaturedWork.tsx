@@ -1,96 +1,63 @@
-"use client";
-
 import Link from "next/link";
 import Image from "next/image";
-import { Image as ImageIcon, Video, ArrowRight } from "lucide-react";
-import { motion, useReducedMotion } from "framer-motion";
-import { fadeUp, fadeIn, staggerContainer } from "@/lib/motion";
 import { projects } from "@/data/projects";
-
-const MotionLink = motion.create(Link);
+import { PhotoIcon, VideoIcon, DoubleRule } from "@/components/ui/Icons";
 
 export default function FeaturedWork() {
-  const reduce = useReducedMotion();
-
   // Manifest is ordered most-recent first.
-  const featured = projects.slice(0, 4);
+  const featured = projects.slice(0, 3);
   if (featured.length === 0) return null;
 
   return (
-    <section className="section ice">
+    <section className="sect tinted" id="portfolio">
       <div className="wrap">
-        <motion.div
-          className="sec-head center"
-          variants={reduce ? undefined : fadeUp}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-        >
-          <span className="eyebrow">Featured work</span>
-          <h2>Recent projects across the UAE</h2>
-          <p>Real photos and clips from jobs our team has delivered on the ground.</p>
-        </motion.div>
+        <div className="s-head center">
+          <span className="s-eyebrow">Recent work</span>
+          <h2 className="s-title">Projects across Dubai</h2>
+          <DoubleRule center />
+          <p className="s-sub">A sample of recent installations and maintenance works.</p>
+        </div>
 
-        <motion.div
-          className="proj-grid"
-          variants={reduce ? undefined : staggerContainer}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.15 }}
-        >
+        <div className="pf-grid">
           {featured.map((p) => (
-            <MotionLink
-              key={p.slug}
-              href="/portfolio"
-              className="proj-card"
-              variants={reduce ? undefined : fadeUp}
-              whileHover={reduce ? undefined : { y: -6 }}
-              aria-label={`${p.title} — view in portfolio`}
-            >
-              <div className="proj-cover">
+            <Link className="pf" href="/portfolio" key={p.slug} aria-label={`${p.title} — view in portfolio`}>
+              <div className="thumb">
                 {p.cover && (
                   <Image
                     src={p.cover}
                     alt={p.title}
                     fill
                     loading="lazy"
-                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                    sizes="(max-width: 640px) 100vw, (max-width: 900px) 50vw, 33vw"
                   />
                 )}
-                <div className="proj-badge">
+                <span className="cat">{p.category}</span>
+                <span className="count">
                   <span>
-                    <ImageIcon aria-hidden="true" />
+                    <PhotoIcon />
                     {p.images.length}
                   </span>
                   {p.videos.length > 0 && (
                     <span>
-                      <Video aria-hidden="true" />
+                      <VideoIcon />
                       {p.videos.length}
                     </span>
                   )}
-                </div>
+                </span>
               </div>
-              <div className="proj-body">
-                <span className="proj-cat">{p.category}</span>
+              <div className="body">
                 <h3>{p.title}</h3>
                 {p.description && <p>{p.description}</p>}
               </div>
-            </MotionLink>
+            </Link>
           ))}
-        </motion.div>
+        </div>
 
-        <motion.div
-          className="flex justify-center mt-10"
-          variants={reduce ? undefined : fadeIn}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-        >
-          <Link href="/portfolio" className="btn btn-cyan">
+        <div style={{ display: "flex", justifyContent: "center", marginTop: 36 }}>
+          <Link className="btn btn-call" href="/portfolio">
             View all projects
-            <ArrowRight size={16} />
           </Link>
-        </motion.div>
+        </div>
       </div>
     </section>
   );

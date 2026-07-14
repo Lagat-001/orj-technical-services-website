@@ -2,14 +2,11 @@
 
 import { useState } from "react";
 import Image from "next/image";
-import { Image as ImageIcon, Video } from "lucide-react";
-import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
-import { fadeUp, fadeIn, staggerContainer } from "@/lib/motion";
 import Lightbox from "@/components/ui/Lightbox";
 import { projects, categories, type Project } from "@/data/projects";
+import { PhotoIcon, VideoIcon } from "@/components/ui/Icons";
 
 export default function ProjectsGallery() {
-  const reduce = useReducedMotion();
   const [active, setActive] = useState<string>("All");
   const [selected, setSelected] = useState<Project | null>(null);
 
@@ -20,16 +17,10 @@ export default function ProjectsGallery() {
     <>
       <Lightbox project={selected} onClose={() => setSelected(null)} />
 
-      <section className="section">
+      <section className="sect tinted">
         <div className="wrap">
           {showFilters && (
-            <motion.div
-              className="filter-row"
-              variants={reduce ? undefined : fadeIn}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true }}
-            >
+            <div className="filter-row">
               {categories.map((cat) => (
                 <button
                   key={cat}
@@ -40,60 +31,49 @@ export default function ProjectsGallery() {
                   {cat}
                 </button>
               ))}
-            </motion.div>
+            </div>
           )}
 
-          <motion.div
-            key={active}
-            className="proj-grid"
-            variants={reduce ? undefined : staggerContainer}
-            initial="hidden"
-            animate="visible"
-          >
-            <AnimatePresence mode="sync">
-              {filtered.map((p) => (
-                <motion.button
-                  key={p.slug}
-                  type="button"
-                  className="proj-card"
-                  variants={reduce ? undefined : fadeUp}
-                  layout={!reduce}
-                  whileHover={reduce ? undefined : { y: -6 }}
-                  onClick={() => setSelected(p)}
-                  aria-label={`View ${p.title} — ${p.images.length} photos${p.videos.length ? `, ${p.videos.length} videos` : ""}`}
-                >
-                  <div className="proj-cover">
-                    {p.cover && (
-                      <Image
-                        src={p.cover}
-                        alt={p.title}
-                        fill
-                        loading="lazy"
-                        sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                      />
-                    )}
-                    <div className="proj-badge">
+          <div className="pf-grid">
+            {filtered.map((p) => (
+              <button
+                key={p.slug}
+                type="button"
+                className="pf"
+                onClick={() => setSelected(p)}
+                aria-label={`View ${p.title} — ${p.images.length} photos${p.videos.length ? `, ${p.videos.length} videos` : ""}`}
+              >
+                <div className="thumb">
+                  {p.cover && (
+                    <Image
+                      src={p.cover}
+                      alt={p.title}
+                      fill
+                      loading="lazy"
+                      sizes="(max-width: 640px) 100vw, (max-width: 900px) 50vw, 33vw"
+                    />
+                  )}
+                  <span className="cat">{p.category}</span>
+                  <span className="count">
+                    <span>
+                      <PhotoIcon />
+                      {p.images.length}
+                    </span>
+                    {p.videos.length > 0 && (
                       <span>
-                        <ImageIcon aria-hidden="true" />
-                        {p.images.length}
+                        <VideoIcon />
+                        {p.videos.length}
                       </span>
-                      {p.videos.length > 0 && (
-                        <span>
-                          <Video aria-hidden="true" />
-                          {p.videos.length}
-                        </span>
-                      )}
-                    </div>
-                  </div>
-                  <div className="proj-body">
-                    <span className="proj-cat">{p.category}</span>
-                    <h3>{p.title}</h3>
-                    {p.description && <p>{p.description}</p>}
-                  </div>
-                </motion.button>
-              ))}
-            </AnimatePresence>
-          </motion.div>
+                    )}
+                  </span>
+                </div>
+                <div className="body">
+                  <h3>{p.title}</h3>
+                  {p.description && <p>{p.description}</p>}
+                </div>
+              </button>
+            ))}
+          </div>
         </div>
       </section>
     </>
